@@ -40,7 +40,7 @@ $
 - must be computed #emph[ab intio] via $Delta$SCF@Nguyen2018@DeGennaro2022a or DFPT@Colonna2018@Colonna2022 #pause
 - one screening parameter per (non-equivalent) orbital #pause
 - corresponds to the vast majority of the computational cost #pause
-- critical that they are accurate; if $psi_i (bold(r)) = sum_j U_(i j) phi_i (bold(r))$ then
+- critical that they are accurate; if $psi_i (bold(r)) = sum_j U_(i j) phi_j (bold(r))$ then
   $
     Delta epsilon_(i in"occ") =
     sum_(j) alpha_j U_(i j)U_(j i)^dagger
@@ -112,7 +112,7 @@ $
       image("figures/water.png", width: 100%),
       grid.cell(align: center + horizon, [...]),
       grid.cell(inset: 1em, align: center, fill: s.colors.primary, colspan: 3, text(fill: white, "train")),
-      grid.cell(inset: 1em, align: center, fill: s.colors.secondary, colspan: 7, [deploy]),
+      grid.cell(inset: 1em, align: center, fill: s.colors.secondary, colspan: 7, [predict]),
   )
 
   #pause _or_ train on a small cell and deploy on a larger cell
@@ -194,7 +194,7 @@ $
 == Conclusions
 - lightweight machine-learning models can predict Koopmans screening parameters with high accuracy
 - #pause does not transfer to systems with novel atomic environments and/or substantially different macroscopic screening
-- #pause predicting electronic response can be done efficiently with frozen-orbital approximations and machinepredicting
+- #pause predicting electronic response can be done efficiently with frozen-orbital approximations and machine learning
 - #pause for more details see our arXiv preprint #cite(<Schubert2024>)
 
 == References
