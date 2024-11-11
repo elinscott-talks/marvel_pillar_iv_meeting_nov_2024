@@ -39,7 +39,14 @@ $
 
 - must be computed #emph[ab intio] via $Delta$SCF@Nguyen2018@DeGennaro2022a or DFPT@Colonna2018@Colonna2022 #pause
 - one screening parameter per (non-equivalent) orbital #pause
-- corresponds to the vast majority of the computational cost
+- corresponds to the vast majority of the computational cost #pause
+- critical that they are accurate; if $psi_i (bold(r)) = sum_j U_(i j) phi_i (bold(r))$ then
+  $
+    Delta epsilon_(i in"occ") =
+    sum_(j) alpha_j U_(i j)U_(j i)^dagger
+    (-E_"Hxc" [rho - rho_j]+E_"Hxc" [rho - rho_j + n_j] - integral d bold(r) v_"Hxc" [rho - rho_j + n_j](bold(r))  n_j (bold(r)))
+  $
+
 
 == The machine-learning framework
 
@@ -59,8 +66,8 @@ $
   )
 
   $
-    c^i_(n l m, k) & = integral dif bold(r) g_(n l) (r) Y_(l m)(theta,phi) n^i (
-      bold(r) - bold(R)^i
+    c^i_(n l m, k) & = integral dif bold(r) g_(n l) (r) Y_(l m)(theta,phi) n_i (
+      bold(r) - bold(R)_i
     )
   $
 
@@ -117,31 +124,47 @@ $
 
 == Accuracy
 
-#slide[
-  #grid(
-    columns: (1fr, 1fr),
-    align: horizon + center,
-    gutter: 1em,
-    image(
-      "figures/water_cls_calc_vs_pred_and_hist_bottom_panel_alphas.svg",
-      height: 70%,
-    ),
-    image(
-      "figures/CsSnI3_calc_vs_pred_and_hist_bottom_panel_alphas.svg",
-      height: 70%,
-    ),
+#align(center + horizon, image("figures/water.png", height: 100%))
 
-    "water", "CsSnI" + sub("3"),
-  )
-  #blcite(<Schubert2024>)
+#image("figures/water_cls_calc_vs_pred_and_hist_0.png")
+
+#image("figures/water_cls_calc_vs_pred_and_hist_1.png")
+
+#image("figures/water_cls_calc_vs_pred_and_hist_2.png")
+
+#image("figures/water_cls_calc_vs_pred_and_hist_3.png")
+
+#image("figures/water_cls_calc_vs_pred_and_hist_4.png")
+
+#image("figures/water_cls_calc_vs_pred_and_hist_5.png")
+
+#align(center + horizon, image("figures/CsSnI3_disordered.png", height: 100%))
+
+#image("figures/CsSnI3_calc_vs_pred_and_hist_0.png")
+
+#image("figures/CsSnI3_calc_vs_pred_and_hist_1.png")
+
+#image("figures/CsSnI3_calc_vs_pred_and_hist_2.png")
+
+#image("figures/CsSnI3_calc_vs_pred_and_hist_3.png")
+
+#image("figures/CsSnI3_calc_vs_pred_and_hist_4.png")
+
+#image("figures/CsSnI3_calc_vs_pred_and_hist_5.png")
+
+#matrix-slide()[
+#align(right + horizon, image("figures/water_cls_calc_vs_pred_and_hist.png"))
+][
+#align(left + horizon, image("figures/CsSnI3_calc_vs_pred_and_hist.png"))
 ]
+
 
 #slide[
   #align(center, 
   image(
     "figures/convergence_analysis_Eg_only.svg",
-    height: 80%,
-  ) + [accurate to within $cal("O")$ (10 meV) #emph[cf.] typical band gap accuracy of $cal("O")$ (100 meV)]
+    height: 70%,
+  ) + [accurate to within $cal("O")$ (10 meV) #emph[cf.] typical band gap accuracy of $cal("O")$ (100 meV); #pause \ ridge-regression on one snapshot more accurate than oneshot]
   )
 ]
 
@@ -156,20 +179,22 @@ $
 
 == Transferability (or lack thereof)
 
-TODO
+#align(horizon + center, image("figures/transferability_water.png"))
+
+#align(horizon + center, image("figures/transferability_cssni3.png"))
 
 == Integrated in `koopmans`
 
-New block in the input file
+- new block in the input file
+- simple control of training/testing/predicting
+- generates the ML model as a `.pkl` file for use in subsequent calculations
 
-Simple control of training/testing/deploying
-
-Generates the ML model as a `.pkl` file for use in subsequent calculations
+#raw(block: true, lang: "json", read("scripts/cssni3_ml_block.json"))
 
 == Conclusions
 - lightweight machine-learning models can predict Koopmans screening parameters with high accuracy
 - #pause does not transfer to systems with novel atomic environments and/or substantially different macroscopic screening
-- #pause predicting electronic response can be done efficiently with frozen-orbital approximations and machine learning
+- #pause predicting electronic response can be done efficiently with frozen-orbital approximations and machinepredicting
 - #pause for more details see our arXiv preprint #cite(<Schubert2024>)
 
 == References

@@ -318,7 +318,7 @@
   progress-bar: false,
   color-scheme: "blue-green",
   display-current-section: false,
-  footer-columns: (5%, 1fr, 15%),
+  footer-columns: (5%, 1fr, 25%),
   footer-a: self => states.slide-counter.display(),
   footer-b: self => if self.info.short-title == auto {
     self.info.title

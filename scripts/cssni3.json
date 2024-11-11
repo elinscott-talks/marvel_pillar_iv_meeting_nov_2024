@@ -1,0 +1,104 @@
+{
+  "workflow": {
+    "task": "trajectory",
+    "functional": "ki",
+    "base_functional": "pbesol",
+    "init_orbitals": "mlwfs",
+    "mp_correction": true,
+    "pseudo_library": "pseudo_dojo_standard",
+    "gb_correction": false,
+    "eps_inf": 7.221039513772,
+    "from_scratch": true,
+    "calculate_bands": false
+  },
+  "ml": {
+    "predict": true,
+    "model_file": "cssni3_10_snapshot_model.pkl",
+    "n_max": 6,
+    "l_max": 6,
+    "r_min": 0.5,
+    "r_max": 4.0,
+    "estimator": "ridge_regression",
+    "descriptor": "orbital_density",
+    "occ_and_emp_together": true
+  },
+
+  "atoms": {
+    "atomic_positions": {
+      "units": "angstrom",
+      "snapshots": "all-snapshots.xyz"
+    },
+    "cell_parameters": {
+      "periodic": true,
+      "units": "angstrom",
+      "vectors": [
+        [
+          12.34762943263885,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          12.34762943263885,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          12.34762943263885
+        ]
+      ]
+    }
+  },
+  "calculator_parameters": {
+    "ecutwfc": 70.0,
+    "pw": {
+      "system": {
+        "nbnd": 300
+      }
+    },
+    "w90": {
+      "projections": [
+        [
+          {
+            "site": "Cs",
+            "ang_mtm": "s"
+          },
+          {
+            "site": "Sn",
+            "ang_mtm": "d"
+          }
+        ],
+        [
+          {
+            "site": "I",
+            "ang_mtm": "s"
+          }
+        ],
+        [
+          {
+            "site": "Cs",
+            "ang_mtm": "p"
+          }
+        ],
+        [
+          {
+            "site": "Sn",
+            "ang_mtm": "s"
+          },
+          {
+            "site": "I",
+            "ang_mtm": "p"
+          }
+        ],
+        [
+          {
+            "site": "Sn",
+            "ang_mtm": "p"
+          }
+        ]
+      ],
+      "dis_froz_max": 5.5
+    }
+  }
+}

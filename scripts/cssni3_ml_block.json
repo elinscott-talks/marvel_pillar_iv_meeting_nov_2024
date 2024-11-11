@@ -1,0 +1,11 @@
+  "ml": {
+    "predict": true,
+    "model_file": "cssni3_10_snapshot_model.pkl",
+    "n_max": 6,
+    "l_max": 6,
+    "r_min": 0.5,
+    "r_max": 4.0,
+    "estimator": "ridge_regression",
+    "descriptor": "orbital_density",
+    "occ_and_emp_together": true
+  },
